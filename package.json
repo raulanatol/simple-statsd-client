@@ -1,14 +1,39 @@
 {
   "name": "simple-statsd-client",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Simple statsd client for node",
+  "keywords": [
+    "node",
+    "statsd",
+    "typescript"
+  ],
+  "license": "MIT",
+  "author": "raulanatol",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index",
+  "typings": "dist/index",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run clean && tsc && webpack",
+    "clean": "shx rm -rf dist",
+    "lint": "tslint -p ./tslint.json",
+    "test": "jest"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^22.0.1",
+    "@types/node": "^9.4.7",
+    "ajv": "^6.2.1",
+    "ajv-keywords": "^3.1.0",
+    "awesome-typescript-loader": "^4.0.1",
+    "jest": "^22.4.2",
+    "pre-push": "^0.1.1",
+    "shx": "^0.2.2",
+    "ts-jest": "^22.4.1",
+    "typescript": "^2.7.2",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.10"
+  },
   "jest": {
     "transform": {
       "^.+\\.(ts|tsx)$": "<rootDir>/config/preprocessor.js"
@@ -24,11 +49,9 @@
       "json"
     ]
   },
-  "devDependencies": {
-    "@types/jest": "^22.0.1",
-    "@types/node": "^9.4.7",
-    "jest": "^22.4.2",
-    "ts-jest": "^22.4.1",
-    "typescript": "^2.7.2"
-  }
+  "pre-push": [
+    "build",
+    "lint",
+    "test"
+  ]
 }

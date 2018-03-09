@@ -4,16 +4,17 @@
     "module": "commonjs",
     "outDir": "dist",
     "sourceMap": false,
-    "declaration": false,
+    "declaration": true,
     "typeRoots": [
       "node_modules/@types"
     ]
   },
-  "include": [
-    "index.ts",
-    "src/**/*.ts"
+  "files": [
+    "lib/index.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "build",
+    "dist"
   ]
 }
