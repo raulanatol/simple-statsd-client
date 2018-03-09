@@ -47,7 +47,7 @@ function uncommitted_changes {
 }
 
 function publish {
-  npm publish --registry
+  npm publish
 }
 
 function gitPush {
